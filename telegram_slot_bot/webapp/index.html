@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Poker Mini App</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    :root {
+      color-scheme: light dark;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: var(--tg-theme-bg-color, #0b0f17);
+      color: var(--tg-theme-text-color, #fff);
+    }
+    .wrap {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 24px 16px calc(env(keyboard-inset-height) + 24px);
+      box-sizing: border-box;
+    }
+    .title {
+      font-size: 22px;
+      font-weight: 700;
+      text-align: center;
+    }
+    .subtitle { opacity: .8; text-align:center; }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      width: 100%;
+      max-width: 480px;
+    }
+    button {
+      appearance: none;
+      border: none;
+      border-radius: 12px;
+      padding: 16px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #fff;
+      background: #2b5cff;
+      box-shadow: 0 6px 18px rgba(43,92,255,.35);
+    }
+    button.secondary { background: #1f2937; box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
+    .row { display:flex; gap: 12px; }
+    .row > button { flex: 1; }
+    .card {
+      width: 100%;
+      max-width: 480px;
+      background: rgba(255,255,255,.06);
+      border-radius: 12px;
+      padding: 12px 14px;
+      box-sizing: border-box;
+    }
+    .muted { opacity:.8; font-size:14px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="title">Техасский Холдем</div>
+    <div class="subtitle muted">Мини‑приложение. Нажмите Играть, чтобы начать.</div>
+
+    <div class="grid">
+      <button id="btn-play">Играть</button>
+      <div class="row">
+        <button class="secondary" id="btn-deposit">Пополнение</button>
+        <button class="secondary" id="btn-withdraw">Вывод</button>
+      </div>
+      <div class="row">
+        <button class="secondary" id="btn-invite">Пригласить</button>
+        <button class="secondary" id="btn-top">Топ игроков</button>
+      </div>
+      <div class="card">
+        <div id="user-line" class="muted">Загрузка профиля…</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/webapp/app.js"></script>
+</body>
+</html>
