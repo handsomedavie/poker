@@ -63,6 +63,38 @@
       box-sizing: border-box;
     }
     .muted { opacity:.8; font-size:14px; }
+    .table {
+      width: 100%;
+      max-width: 480px;
+      border-radius: 999px;
+      background: radial-gradient(circle at center, rgba(16,185,129,.9), rgba(6,95,70,.95));
+      padding: 18px 12px;
+      box-shadow: 0 16px 40px rgba(0,0,0,.55);
+      box-sizing: border-box;
+      margin-top: 8px;
+    }
+    .table-row {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .card-chip {
+      min-width: 40px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: rgba(15,23,42,.9);
+      border: 1px solid rgba(148,163,184,.7);
+      text-align: center;
+      font-weight: 600;
+      letter-spacing: .03em;
+      font-size: 16px;
+    }
+    .hand-label {
+      text-align: center;
+      font-size: 14px;
+      opacity: .9;
+    }
   </style>
 </head>
 <body>
@@ -82,6 +114,15 @@
       </div>
       <div class="card">
         <div id="user-line" class="muted">Загрузка профиля…</div>
+      </div>
+      <div class="table">
+        <div class="table-row" id="board-row">
+          <!-- борд 5 карт -->
+        </div>
+        <div class="table-row" id="player-row">
+          <!-- карты игрока -->
+        </div>
+        <div class="hand-label" id="hand-label">Нажмите «Играть», чтобы получить раздачу.</div>
       </div>
     </div>
   </div>

@@ -9,6 +9,9 @@
   const $ = (id) => document.getElementById(id);
 
   const userLine = $('user-line');
+  const boardRow = $('board-row');
+  const playerRow = $('player-row');
+  const handLabel = $('hand-label');
   const initData = tg ? tg.initData : '';
   const initDataUnsafe = tg ? tg.initDataUnsafe : {};
 
@@ -27,18 +30,37 @@
     }
   }
 
+  function renderHand(data) {
+    boardRow.innerHTML = '';
+    playerRow.innerHTML = '';
+    const board = data.board || [];
+    const cards = data.player_cards || [];
+    const hand = data.hand_name || 'Комбинация';
+
+    board.forEach((c) => {
+      const el = document.createElement('div');
+      el.className = 'card-chip';
+      el.textContent = c || '';
+      boardRow.appendChild(el);
+    });
+    cards.forEach((c) => {
+      const el = document.createElement('div');
+      el.className = 'card-chip';
+      el.textContent = c || '';
+      playerRow.appendChild(el);
+    });
+    handLabel.textContent = hand;
+  }
+
   async function onPlay() {
     if (tg) tg.HapticFeedback.impactOccurred('heavy');
     try {
       const resp = await fetch('/api/holdem/start', { method: 'POST' });
       if (!resp.ok) throw new Error('bad status');
       const data = await resp.json();
-      const [c1, c2] = data.player_cards || [];
-      const board = (data.board || []).join(' ');
-      const hand = data.hand_name || 'Комбинация';
-      alert(`Ваши карты: ${c1} ${c2}\nБорд: ${board}\nРука: ${hand}`);
+      renderHand(data);
     } catch (e) {
-      alert('Ошибка раздачи руки');
+      if (handLabel) handLabel.textContent = 'Ошибка раздачи руки';
     }
   }
   function onDeposit() {
