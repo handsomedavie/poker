@@ -12,6 +12,7 @@
   const screenIntro = $('screen-intro');
   const screenGame = $('screen-game');
   const btnHome = $('btn-home');
+  const btnPlayGame = $('btn-play-game');
   const boardRow = $('board-row');
   const playerRow = $('player-row');
   const handLabel = $('hand-label');
@@ -161,6 +162,9 @@
   }
 
   $('btn-play').addEventListener('click', onPlay);
+  if (btnPlayGame) {
+    btnPlayGame.addEventListener('click', onPlay);
+  }
   $('btn-deposit').addEventListener('click', onDeposit);
   $('btn-withdraw').addEventListener('click', onWithdraw);
   $('btn-invite').addEventListener('click', onInvite);

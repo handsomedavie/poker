@@ -22,10 +22,11 @@
       content: "";
       position: fixed;
       inset: 0;
-      background-image: url("https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1400&q=90");
+      /* AI-style sexy girl playing poker at a casino table */
+      background-image: url("https://images.unsplash.com/photo-1547569664-1b6778b1c8eb?auto=format&fit=crop&w=1400&q=90");
       background-size: cover;
       background-position: center;
-      opacity: .95;
+      opacity: .9;
       z-index: -1;
     }
     .wrap {
@@ -75,18 +76,30 @@
       font-weight: 600;
       font-family: "Montserrat", system-ui, sans-serif;
       color: #f9fafb;
-      background: radial-gradient(circle at 20% 0, #fbbf24, #b45309);
-      border: 1px solid rgba(254,243,199,.7);
-      box-shadow: 0 10px 26px rgba(124,45,18,.85);
+      background: radial-gradient(circle at 20% 0, #22c55e, #14532d);
+      border: 1px solid rgba(187,247,208,.8);
+      box-shadow: 0 10px 26px rgba(22,101,52,.9);
       cursor: pointer;
       transition: transform .08s ease-out, box-shadow .08s ease-out, opacity .08s;
     }
-    button:hover { transform: translateY(-1px); box-shadow: 0 10px 28px rgba(248,113,113,.55); }
+    button:hover { transform: translateY(-1px); box-shadow: 0 10px 28px rgba(21,128,61,.7); }
     button:active { transform: translateY(1px); box-shadow: 0 4px 14px rgba(0,0,0,.6); opacity: .9; }
     button.secondary {
-      background: radial-gradient(circle at top, #14532d, #052e16);
-      border-color: rgba(22,163,74,.7);
-      box-shadow: 0 6px 18px rgba(6,95,70,.9);
+      background: radial-gradient(circle at top, #4b2e10, #1f2933);
+      border-color: rgba(245,158,11,.8);
+      box-shadow: 0 6px 18px rgba(120,53,15,.9);
+    }
+    #screen-intro {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+    #btn-play {
+      min-width: 220px;
+      padding: 16px 26px;
+      font-size: 18px;
+      margin-inline: auto;
     }
     .row { display:flex; gap: 12px; }
     .row > button { flex: 1; }
@@ -167,7 +180,7 @@
 
     <div class="grid">
       <div id="screen-intro" class="screen screen--active">
-        <button id="btn-play">Играть</button>
+        <button id="btn-play" style="margin: 0 auto;">Играть</button>
         <div class="row">
           <button class="secondary" id="btn-deposit">Пополнение</button>
           <button class="secondary" id="btn-withdraw">Вывод</button>
@@ -195,6 +208,9 @@
           <div class="stats-title">Статистика тренажёра</div>
           <div id="stats-line" class="muted">Раздач сыграно: 0</div>
           <div id="stats-details" class="muted"></div>
+          <div style="margin-top:10px; display:flex; justify-content:flex-start;">
+            <button id="btn-play-game" style="min-width:140px;">Играть</button>
+          </div>
           <div style="margin-top:8px; display:flex; justify-content:flex-end;">
             <button class="secondary" id="btn-home" style="min-width:140px;">Вернуться домой</button>
           </div>
