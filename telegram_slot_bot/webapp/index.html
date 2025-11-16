@@ -23,8 +23,8 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 16px;
-      padding: 24px 16px calc(env(keyboard-inset-height) + 24px);
+      gap: 20px;
+      padding: 28px 16px calc(env(keyboard-inset-height) + 28px);
       box-sizing: border-box;
     }
     .title {
@@ -38,20 +38,27 @@
       grid-template-columns: 1fr;
       gap: 12px;
       width: 100%;
-      max-width: 480px;
+      max-width: 560px;
     }
     button {
       appearance: none;
       border: none;
-      border-radius: 12px;
-      padding: 16px;
-      font-size: 18px;
+      border-radius: 999px;
+      padding: 14px 20px;
+      font-size: 16px;
       font-weight: 600;
-      color: #fff;
-      background: #2b5cff;
-      box-shadow: 0 6px 18px rgba(43,92,255,.35);
+      color: #f9fafb;
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      box-shadow: 0 8px 22px rgba(248,113,113,.45);
+      cursor: pointer;
+      transition: transform .08s ease-out, box-shadow .08s ease-out, opacity .08s;
     }
-    button.secondary { background: #1f2937; box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
+    button:hover { transform: translateY(-1px); box-shadow: 0 10px 28px rgba(248,113,113,.55); }
+    button:active { transform: translateY(1px); box-shadow: 0 4px 14px rgba(0,0,0,.6); opacity: .9; }
+    button.secondary {
+      background: radial-gradient(circle at top, #1f2937, #020617);
+      box-shadow: 0 4px 14px rgba(15,23,42,.8);
+    }
     .row { display:flex; gap: 12px; }
     .row > button { flex: 1; }
     .card {
@@ -65,13 +72,14 @@
     .muted { opacity:.8; font-size:14px; }
     .table {
       width: 100%;
-      max-width: 480px;
+      max-width: 560px;
       border-radius: 999px;
-      background: radial-gradient(circle at center, rgba(16,185,129,.9), rgba(6,95,70,.95));
-      padding: 18px 12px;
-      box-shadow: 0 16px 40px rgba(0,0,0,.55);
+      background: radial-gradient(circle at 20% 10%, #22c55e, #16a34a 45%, #065f46 80%);
+      padding: 22px 18px;
+      box-shadow: 0 22px 60px rgba(0,0,0,.7);
       box-sizing: border-box;
-      margin-top: 8px;
+      margin-top: 10px;
+      border: 2px solid rgba(15,23,42,.6);
     }
     .table-row {
       display: flex;
@@ -80,16 +88,26 @@
       margin-bottom: 8px;
     }
     .card-chip {
-      min-width: 40px;
-      padding: 8px 10px;
-      border-radius: 8px;
-      background: rgba(15,23,42,.9);
-      border: 1px solid rgba(148,163,184,.7);
+      min-width: 52px;
+      min-height: 70px;
+      padding: 6px 8px;
+      border-radius: 10px;
+      background: radial-gradient(circle at top, #f9fafb, #e5e7eb);
+      border: 1px solid rgba(148,163,184,.9);
       text-align: center;
-      font-weight: 600;
-      letter-spacing: .03em;
-      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      font-size: 20px;
+      color: #020617;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 24px rgba(15,23,42,.7);
     }
+    .card-rank { font-size: 20px; line-height: 1; }
+    .card-suit { font-size: 18px; line-height: 1; }
+    .card-red { color: #dc2626; }
     .hand-label {
       text-align: center;
       font-size: 14px;

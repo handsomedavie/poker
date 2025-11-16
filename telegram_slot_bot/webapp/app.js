@@ -55,17 +55,37 @@
     const cards = data.player_cards || [];
     const hand = data.hand_name || 'Комбинация';
 
-    board.forEach((c) => {
+    function makeCardEl(code) {
       const el = document.createElement('div');
       el.className = 'card-chip';
-      el.textContent = c || '';
-      boardRow.appendChild(el);
+      if (!code) return el;
+      const rank = code[0] || '';
+      const suit = code[1] || '';
+      const rankEl = document.createElement('div');
+      rankEl.className = 'card-rank';
+      rankEl.textContent = rank;
+      const suitEl = document.createElement('div');
+      suitEl.className = 'card-suit';
+      let suitSymbol = suit;
+      if (suit === 'h') suitSymbol = '♥';
+      else if (suit === 'd') suitSymbol = '♦';
+      else if (suit === 'c') suitSymbol = '♣';
+      else if (suit === 's') suitSymbol = '♠';
+      suitEl.textContent = suitSymbol;
+      if (suit === 'h' || suit === 'd') {
+        rankEl.classList.add('card-red');
+        suitEl.classList.add('card-red');
+      }
+      el.appendChild(rankEl);
+      el.appendChild(suitEl);
+      return el;
+    }
+
+    board.forEach((c) => {
+      boardRow.appendChild(makeCardEl(c));
     });
     cards.forEach((c) => {
-      const el = document.createElement('div');
-      el.className = 'card-chip';
-      el.textContent = c || '';
-      playerRow.appendChild(el);
+      playerRow.appendChild(makeCardEl(c));
     });
     handLabel.textContent = hand;
 
