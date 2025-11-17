@@ -49,9 +49,9 @@
     .grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 12px;
+      gap: 18px;
       width: 100%;
-      max-width: 560px;
+      max-width: 1040px; /* шире, чтобы стол занимал ~60–65% экрана */
     }
     .screen {
       transition: opacity .4s ease, transform .4s ease;
@@ -113,12 +113,12 @@
     }
     .muted { opacity:.8; font-size:14px; }
     .table {
-      width: 100%;
-      max-width: 720px;
+      width: 70vw;           /* около 60–70% ширины экрана */
+      max-width: 960px;      /* чтобы хорошо смотреться на десктопе */
       border-radius: 999px;
       padding: 10px;
       box-sizing: border-box;
-      margin-top: 24px;
+      margin: 32px auto 16px;
       background: radial-gradient(circle at 10% 0, #facc15, #b45309 55%, #111827 95%);
       box-shadow:
         0 26px 80px rgba(0,0,0,.85),
