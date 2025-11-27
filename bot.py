@@ -1,8 +1,16 @@
 import os
 import asyncio
+import logging
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update, WebAppInfo
 from telegram.constants import ParseMode
 from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandler, ContextTypes
+
+# Load environment variables
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
 
 from game import SlotMachine
 from db import (
@@ -11,7 +19,17 @@ from db import (
     top_balances, set_display_name
 )
 
-APP_TITLE = "🎰 Однорукий бандит"
+# Logging setup
+logging.basicConfig(
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    level=logging.INFO
+)
+logger = logging.getLogger(__name__)
+
+# Configuration
+APP_TITLE = "🎰 Poker Mini App"
+BOT_USERNAME = os.environ.get("BOT_USERNAME", "Pokergamebot")
+WEBAPP_URL = os.environ.get("WEBAPP_URL", "https://your-app.netlify.app")
 START_BALANCE = 1000
 MIN_BET = 10
 MAX_BET = 200
@@ -19,8 +37,6 @@ BONUS_AMOUNT = 200
 BONUS_COOLDOWN = 24 * 60 * 60
 ANIM_FRAMES = 3
 ANIM_DELAY = 0.4
-
-WEBAPP_URL = os.environ.get("WEBAPP_URL", "http://localhost:8000")
 
 slot = SlotMachine()
 
